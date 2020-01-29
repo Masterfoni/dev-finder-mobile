@@ -6,6 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import styles from '../styles/Main.style';
 import api from '../services/api';
+import { connect, disconnect } from '../services/socket';
 
 function Main({ navigation }) {
     const [devs, setDevs] = useState([]);
@@ -33,6 +34,17 @@ function Main({ navigation }) {
         loadInitialPosition();
     }, []);
 
+    function setupWebsocket() {
+        const { latitude, longitude } = currentRegion;
+
+
+        connect(
+            latitude,
+            longitude,
+            stack,
+        );
+    }
+
     async function loadDevs() {
         const { latitude, longitude } = currentRegion;
 
@@ -45,8 +57,7 @@ function Main({ navigation }) {
         });
 
         setDevs(response.data.devs);
-
-        console.log(response.data);
+        setupWebsocket();
     }
 
     function handleRegionChanged(region) {
