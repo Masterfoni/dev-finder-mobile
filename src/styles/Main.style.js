@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 
     searchForm: {
         position: "absolute",
-        bottom: 20,
+        top: 20,
         left: 20,
         right: 20,
         zIndex: 5,

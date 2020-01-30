@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Image, View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -105,7 +105,7 @@ function Main({ navigation }) {
                     </Marker>
                 )}
             </MapView>
-
+            
             <View style={styles.searchForm}>
                 <TextInput
                     style={styles.searchInput}
@@ -118,7 +118,7 @@ function Main({ navigation }) {
                 />
 
                 <TouchableOpacity onPress={()=>{ loadDevs(); }} style={styles.loadButton}>
-                    <MaterialIcons name="my-location" size={20} color="#FFF" />
+                    <MaterialIcons name="search" size={20} color="#FFF" />
                 </TouchableOpacity>
             </View>
         </>
