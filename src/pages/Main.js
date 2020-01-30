@@ -80,12 +80,12 @@ function Main({ navigation }) {
                 initialRegion={currentRegion} 
                 style={styles.map}
             >
-                {devs.map(({ _id, location, avatar_url, bio, name, stack }) => {
+                {devs.map(({ _id, location, avatar_url, bio, name, stack, github_username }) => 
                     <Marker 
                         key={_id}
                         coordinate={{
-                            latitude: location.coordinates[0], 
-                            longitude: location.coordinates[1],
+                            latitude: location.coordinates[1], 
+                            longitude: location.coordinates[0],
                         }}
                     >
                         <Image 
@@ -94,7 +94,7 @@ function Main({ navigation }) {
                         />
 
                         <Callout 
-                            onPress={() => navigation.navigate('Profile', { github_username: 'Masterfoni' })}
+                            onPress={() => navigation.navigate('Profile', { github_username })}
                         >
                             <View style={ styles.callout }>
                                 <Text style={ styles.devName }>{name}</Text>
@@ -103,7 +103,7 @@ function Main({ navigation }) {
                             </View>
                         </Callout>
                     </Marker>
-                })}
+                )}
             </MapView>
 
             <View style={styles.searchForm}>
